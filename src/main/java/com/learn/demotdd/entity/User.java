@@ -45,4 +45,5 @@ public class User implements Serializable {
         result = 31 * result + lastName.hashCode();
         return result;
     }
+
 }

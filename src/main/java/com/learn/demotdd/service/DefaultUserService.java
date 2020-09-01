@@ -33,4 +33,5 @@ public class DefaultUserService implements UserService {
             throw new IllegalArgumentException("Request cannot be null");
         }
     }
+
 }

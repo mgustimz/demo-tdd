@@ -14,6 +14,7 @@ import static com.google.common.truth.Truth.assertThat;
 class UserRepositoryTest {
 
     private final EasyRandom easyRandom = new EasyRandom();
+
     @Autowired
     private UserRepository userRepository;
 
@@ -31,4 +32,5 @@ class UserRepositoryTest {
         User savedUser = userRepository.getOne(user.getId());
         assertThat(user).isEqualTo(savedUser);
     }
+
 }
