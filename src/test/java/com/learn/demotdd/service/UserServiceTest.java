@@ -3,6 +3,7 @@ package com.learn.demotdd.service;
 import com.learn.demotdd.entity.User;
 import com.learn.demotdd.exception.NoDataException;
 import com.learn.demotdd.repository.UserRepository;
+import com.learn.demotdd.service.impl.DefaultUserService;
 import com.learn.demotdd.vo.UserVO;
 import org.jeasy.random.EasyRandom;
 import org.junit.jupiter.api.BeforeEach;

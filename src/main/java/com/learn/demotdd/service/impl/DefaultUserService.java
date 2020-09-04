@@ -1,8 +1,9 @@
-package com.learn.demotdd.service;
+package com.learn.demotdd.service.impl;
 
 import com.learn.demotdd.entity.User;
 import com.learn.demotdd.exception.NoDataException;
 import com.learn.demotdd.repository.UserRepository;
+import com.learn.demotdd.service.UserService;
 import com.learn.demotdd.vo.UserVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
