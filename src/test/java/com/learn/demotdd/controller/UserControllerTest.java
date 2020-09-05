@@ -6,7 +6,6 @@ import com.learn.demotdd.vo.UserVO;
 import org.jeasy.random.EasyRandom;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.stubbing.Answer;
 
 import static org.mockito.Mockito.*;
 

@@ -1,16 +1,13 @@
 package com.learn.demotdd.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.common.truth.Truth;
 import com.learn.demotdd.constant.URLConstant;
 import com.learn.demotdd.exception.NoDataException;
 import com.learn.demotdd.service.UserService;
 import com.learn.demotdd.vo.UserVO;
-import org.hamcrest.Matchers;
 import org.jeasy.random.EasyRandom;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -18,14 +15,12 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import java.util.regex.Matcher;
-
-import static com.google.common.truth.Truth.*;
-import static org.hamcrest.Matchers.*;
+import static com.google.common.truth.Truth.assertThat;
+import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest
 class UserControllerIntegrationTest {
@@ -61,7 +56,7 @@ class UserControllerIntegrationTest {
                 MockMvcRequestBuilders
                         .get(URLConstant.USER_API)
                         .contentType(MediaType.APPLICATION_JSON)
-                .param("id", id))
+                        .param("id", id))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id", is(userVO.getId())))
@@ -75,9 +70,9 @@ class UserControllerIntegrationTest {
         when(userService.getOne(id)).thenThrow(new NoDataException("User not found"));
         mockMvc.perform(
                 MockMvcRequestBuilders
-                .get(URLConstant.USER_API)
-                .contentType(MediaType.APPLICATION_JSON)
-                .param("id", id))
+                        .get(URLConstant.USER_API)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .param("id", id))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().is4xxClientError())
                 .andExpect(jsonPath("$.errorCode", is(NoDataException.ERROR_CODE)))
